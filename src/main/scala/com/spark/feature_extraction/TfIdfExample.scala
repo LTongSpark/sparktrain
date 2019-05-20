@@ -35,11 +35,6 @@ import org.apache.spark.sql.SparkSession
   * IDF:IDF是一个估计器，通过拟合数据集产生一个IDFModel。IDFModel输入特征向量（通过由HashingTF 或者 CountVectorizer创建）
   * 并且缩放每列。直观地说，它减少了在语料库中频繁出现的列。
   *
-  * 作者：xcrossed
-  * 链接：https://www.jianshu.com/p/91a3920932c0
-  * 来源：简书
-  * 简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
-  *
   */
 object TfIdfExample {
 
