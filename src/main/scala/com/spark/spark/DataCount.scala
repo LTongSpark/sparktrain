@@ -16,7 +16,7 @@ object DataCount {
 
     val text: RDD[String] = sc.textFile("")
 
-    val wordcount = text.flatMap(_.split(" ")).map((_,1)).reduceByKey(_+_)
+    val wordcount = text.flatMap(_.split(" ")).map((_,1)).reduceByKey(_+_).coalesce(2)
 
     wordcount.collect().foreach(print)
 
@@ -34,9 +34,6 @@ object DataCount {
       val count = rdd._2
       map += (word -> count)
     }).foreach(print)
-
-
-
   }
 
 }

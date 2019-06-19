@@ -9,7 +9,6 @@ import org.apache.spark.ml.linalg.Vectors
 import org.apache.spark.sql.SparkSession
 
 object SparkMLLibBayesWhiteWine {
-
     def main(args: Array[String]): Unit = {
 
         val conf = new SparkConf()
