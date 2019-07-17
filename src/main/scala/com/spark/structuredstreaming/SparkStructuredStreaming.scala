@@ -12,22 +12,22 @@ import org.apache.spark.sql.streaming.OutputMode
 object SparkStructuredStreaming {
   def main(args: Array[String]): Unit = {
     //创建sparkSession
-    val spark = SparkSession.builder().master("local[*]").appName(s"${this.getClass.getSimpleName}")
+    val spark = SparkSession.builder().master("local[*]").appName(this.getClass.getSimpleName)
       .getOrCreate()
 
-    import  spark.implicits._
-      val df = spark.readStream.format("kafka")
-        .option("kafka.bootstrap.servers" ,"zytc222:9092,zytc223:9092,zytc224:9092")
-        .option("subscribe" ,"yc-info")
-        .option("startingOffsets", "latest")
-        .option("max.poll.records", 10000)
-        .option("failOnDataLoss","false")
-        .load()
+    import spark.implicits._
+    val df = spark.readStream.format("kafka")
+      .option("kafka.bootstrap.servers", "zytc222:9092,zytc223:9092,zytc224:9092")
+      .option("subscribe", "yc-info")
+      .option("startingOffsets", "latest")
+      .option("max.poll.records", 10000)
+      .option("failOnDataLoss", "false")
+      .load()
 
-    val word = df.selectExpr("CAST(key AS STRING)" ,"CAST(value AS STRING)").as[(String ,String)]
+    val word = df.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)").as[(String, String)]
     val q = word.select("*").writeStream.queryName("kafka_test").outputMode(OutputMode.Append())
       .format("console")
-        .start()
+      .start()
     q.awaitTermination()
   }
 

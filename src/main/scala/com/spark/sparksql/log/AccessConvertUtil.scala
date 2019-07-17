@@ -1,4 +1,4 @@
-package com.sparksql.log
+package com.spark.sparksql.log
 
 import org.apache.spark.sql.{DataFrame, Row}
 import org.apache.spark.sql.types.{LongType, StringType, StructField, StructType}

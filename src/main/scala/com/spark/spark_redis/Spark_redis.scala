@@ -16,7 +16,7 @@ import org.apache.spark.streaming.{Seconds, StreamingContext}
   * @author LTong
   * @date 19-6-12 12:29
   */
-object spark_redis {
+object Spark_redis {
 
   def main(args: Array[String]): Unit = {
     //val spark = SparkSession.builder().master("local[*]").appName(s"${this.getClass.getSimpleName}").getOrCreate()
@@ -55,7 +55,6 @@ object spark_redis {
     stream.foreachRDD(rdd =>{
       //判断rdd非空
       if(!rdd.isEmpty()) {
-
         val offsetRange: Array[OffsetRange] = rdd.asInstanceOf[HasOffsetRanges].offsetRanges
         val reduced = rdd.map(x => (x.value(),1)).reduceByKey(_+_)
         reduced.foreach(println)

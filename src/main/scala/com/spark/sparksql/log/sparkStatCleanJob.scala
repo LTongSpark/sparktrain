@@ -1,4 +1,4 @@
-package com.sparksql.log
+package com.spark.sparksql.log
 
 import org.apache.spark.sql.{SaveMode, SparkSession}
 
@@ -15,7 +15,11 @@ object sparkStatCleanJob {
 
     val accessDF = spark.createDataFrame(data.map(line =>AccessConvertUtil.parse(line)), AccessConvertUtil.struct)
 
-    accessDF.coalesce(1).write.format("parquet").mode(SaveMode.Overwrite).save("")
+    accessDF.coalesce(1).write.format("parquet")
+      .mode(SaveMode.Overwrite)
+      //按天进行分区时实现
+      .partitionBy("day")
+      .save("")
   }
 
 }

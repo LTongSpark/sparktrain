@@ -1,4 +1,4 @@
-package com.sparksql.log.entity
+package com.spark.sparksql.log.entity
 
 /**
   * @author LTong

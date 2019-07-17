@@ -14,7 +14,6 @@ object BatchBroadcastScala {
         broadData.append(("ling" ,15))
         broadData.append(("to" ,16))
 
-
         //处理需要广播的数据
         val tupleData = env.fromCollection(broadData)
         val toBroadcastData = tupleData.map(tup =>{

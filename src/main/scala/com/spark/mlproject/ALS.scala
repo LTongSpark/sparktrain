@@ -77,7 +77,7 @@ object ALS {
       .setPredictionCol("prediction")
     val rmseExplicit=evaluator.evaluate(predictionExplicit)
     val rmseImplicit=evaluator.evaluate(predictionImplicit)
-    println("显性反馈-->均方根误差为:"+rmseExplicit)
+    println(s"显性反馈-->均方根误差为:${rmseExplicit}")
     println("隐性反馈-->均方根误差为:"+rmseImplicit)
 
     //为每个用户提供10大电影排名

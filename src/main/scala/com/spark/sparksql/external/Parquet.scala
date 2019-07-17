@@ -1,4 +1,4 @@
-package com.sparksql.external
+package com.spark.sparksql.external
 
 import org.apache.spark.sql.SparkSession
 

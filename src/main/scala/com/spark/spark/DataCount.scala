@@ -11,6 +11,7 @@ object DataCount {
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf().setAppName(s"${this.getClass.getSimpleName}")
       .setMaster("local[*]")
+      .set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
 
     val sc = new SparkContext(conf)
 

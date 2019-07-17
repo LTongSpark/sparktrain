@@ -8,6 +8,7 @@ import org.apache.kafka.common.TopicPartition
   * @date 19-6-12 13:21
   */
 object JedisOffset {
+  Tuple22
   def apply(groupid: String)= {
     var fromDbOffset = Map[TopicPartition, Long]()
     val jedis = JPools.getJedis

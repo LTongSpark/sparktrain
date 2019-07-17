@@ -1,9 +1,9 @@
-package com.sparksql.log.dao
+package com.spark.sparksql.log.dao
 
 import java.sql.{Connection, PreparedStatement}
 
-import com.sparksql.log.MySQLUtils
-import com.sparksql.log.entity.{DayCityVideoAccessStat, DayVideoAccessStat, DayVideoTrafficsStat}
+import com.spark.sparksql.log.MySQLUtils
+import com.spark.sparksql.log.entity.{DayCityVideoAccessStat, DayVideoAccessStat, DayVideoTrafficsStat}
 
 import scala.collection.mutable.ListBuffer
 

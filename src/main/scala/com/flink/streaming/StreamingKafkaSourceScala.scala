@@ -10,7 +10,7 @@ import org.apache.flink.streaming.api.CheckpointingMode
 import org.apache.flink.streaming.api.environment.CheckpointConfig
 import org.apache.flink.streaming.api.functions.sink.{RichSinkFunction, SinkFunction}
 import org.apache.flink.streaming.api.windowing.time.Time
-import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer010
+import org.apache.flink.streaming.connectors.kafka.{FlinkKafkaConsumer010, FlinkKafkaConsumer011}
 import org.apache.flink.streaming.util.serialization.SimpleStringSchema
 
 object StreamingKafkaSourceScala {
@@ -19,7 +19,6 @@ object StreamingKafkaSourceScala {
         //隐式转换
 
         import org.apache.flink.api.scala._
-
         //checkpOint
         //必须要设置的一个参数  检查点
         env.enableCheckpointing(50000)
@@ -37,7 +36,7 @@ object StreamingKafkaSourceScala {
         prop.setProperty("bootstrap.servers", "hadoop110:9092")
         prop.setProperty("group.id", "co1")
         //单个topic
-        val myConsumer = new FlinkKafkaConsumer010[String](topic, new SimpleStringSchema(), prop)
+        val myConsumer = new FlinkKafkaConsumer011[String](topic, new SimpleStringSchema(), prop)
         //多个topic 必须是Java的list  必须加上这个隐式转换  不加的话  就没有这个asJava这个方法
         import scala.collection.JavaConverters._
         val myConsumer1: FlinkKafkaConsumer010[String] = new FlinkKafkaConsumer010[String](topic1.asJava, new SimpleStringSchema(), prop)
